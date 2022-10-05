@@ -1,5 +1,19 @@
 {% extends 'store/base.html' %}
 
+{% block title %}
+    {{title}}
+{% endblock %}
+
 {% block content %}
     <h1>lol</h1>
+    {% if books %}
+        {% for el in books %}
+            <div class="alert alert-aening mt-2">
+                <h3>{{el.name}}</h3>
+                <p>{{el.description}}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>нет книг</p>
+    {% endif %}
 {% endblock %}
