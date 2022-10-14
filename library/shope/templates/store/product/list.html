@@ -5,9 +5,10 @@
 {% endblock %}
 
 {% block content %}
-    <div id="sidebar">
+<div class="row content">
+    <div class="col-sm-3 sidenav">
         <h3>Categories</h3>
-        <ul>
+        <ul >
             <li {% if not category %}class="selected"{% endif %}>
                 <a href="{% url 'product_list' %}">All</a>
             </li>
@@ -18,14 +19,16 @@
             {% endfor %}
         </ul>
     </div>
-    <div id="main" class="product-list">
+
+    <div  class="col-sm-9">
         <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
         {% for product in products %}
-            <div class="item">
+            <div class="alert alert-warning mt-2">
                 
                 <a >{{ product.name }}</a><br>
                 ${{ product.price }}
             </div>
         {% endfor %}
     </div>
+</div>
 {% endblock %}
