@@ -12,5 +12,5 @@ urlpatterns = [
         name='product_list_by_category'),
     re_path(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$',
         views.product_detail,
-        name='product_detail'),
+        name='product_detail'), 
 ]

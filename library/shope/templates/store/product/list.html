@@ -23,6 +23,7 @@
     <div  class="col-sm-9">
         <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
         {% for product in products %}
+        <a href="{{ product.get_absolute_url }}">Link</a>
             <div class="alert alert-warning mt-2">
                 
                 <a >{{ product.name }}</a><br>

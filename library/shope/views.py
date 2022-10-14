@@ -5,9 +5,9 @@ from .forms import BookForm
 
 
 
-def index(request):
-    books = Book.objects.order_by('name')
-    return render(request,"store/index.html",{'title':'Главная','books':books})
+# def index(request):
+#     books = Book.objects.order_by('name')
+#     return render(request,"store/index.html",{'title':'Главная','books':books})
 
 
 def create(request):
