@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
     <h1>Your shopping cart</h1>
-    <table class="cart">
+    <table class="">
         <thead>
         <tr>
             <th>Image</th>
@@ -23,8 +23,8 @@
                     <td>{{ product.name }}</td>
                     <td>{{ item.quantity }}</td>
                     <td><a href="{% url 'cart:cart_remove' product.id%}">Remove</a></td>
-                    <td class="num">${{ item.price }}</td>
-                    <td class="num">${{ item.total_price }}</td>
+                    <td>${{ item.price }}</td>
+                    <td>${{ item.total_price }}</td>
                 </tr>
             {% endwith %}
         {% endfor %}
@@ -36,7 +36,7 @@
         </tbody>
     </table>
     <p class="text-right">
-        <a href="{% url 'product_list' %}" class="button light">Continue shopping</a>
+        <a href="{% url 'shope:product_list' %}" class="button light">Continue shopping</a>
         <a href="#" class="button">Checkout</a>
     </p>
 {% endblock %}

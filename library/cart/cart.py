@@ -32,6 +32,7 @@ class Cart(object):
             self.cart[product_id]['quantity'] += quantity
         self.save()
 
+
     def save(self):
         # Обновление сессии cart
         self.session[settings.CART_SESSION_ID] = self.cart
@@ -65,22 +66,24 @@ class Cart(object):
             yield item
             
             
-        def __len__(self):
-            """
-            Подсчет всех товаров в корзине.
-            """
-            return sum(item['quantity'] for item in self.cart.values())
+    def __len__(self):
+        """
+        Подсчет всех товаров в корзине.
+        """
+        return sum(item['quantity'] for item in self.cart.values())
+    
+    
+    def get_total_price(self):
+        """
+        Подсчет стоимости товаров в корзине.
+        """
+        return sum(Decimal(item['price']) * item['quantity'] for item in
+                self.cart.values())
         
         
-        def get_total_price(self):
-            """
-            Подсчет стоимости товаров в корзине.
-            """
-            return sum(Decimal(item['price']) * item['quantity'] for item in
-                    self.cart.values())
-            
-            
-        def clear(self):
-            # удаление корзины из сессии
-            del self.session[settings.CART_SESSION_ID]
-            self.session.modified = True
+    def clear(self):
+        # удаление корзины из сессии
+        del self.session[settings.CART_SESSION_ID]
+        self.session.modified = True
+        
+    

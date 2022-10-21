@@ -10,11 +10,11 @@
         <h3>Categories</h3>
         <ul >
             <li {% if not category %}class="selected"{% endif %}>
-                <a href="{% url 'product_list' %}">All</a>
+                <a href="{% url 'shope:product_list' %}">All</a>
             </li>
             {% for c in categories %}
                 <li {% if category.slug == c.slug %} class="selected"{% endif %}>
-                    <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                    <a class="text-decoration-none" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
                 </li>
             {% endfor %}
         </ul>
@@ -23,10 +23,8 @@
     <div  class="col-sm-9">
         <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
         {% for product in products %}
-        <a href="{{ product.get_absolute_url }}">Link</a>
             <div class="alert alert-warning mt-2">
-                
-                <a >{{ product.name }}</a><br>
+                <a class="text-decoration-none" href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
                 ${{ product.price }}
             </div>
         {% endfor %}
